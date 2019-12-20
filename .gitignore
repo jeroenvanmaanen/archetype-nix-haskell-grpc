@@ -1,5 +1,5 @@
 default.nix
-result
+/result
 dist
 dist-*
 cabal-dev

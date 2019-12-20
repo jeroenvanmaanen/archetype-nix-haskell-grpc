@@ -1,4 +1,4 @@
-# Archetype of a Haskell project built with Nix
+# Archetype of a Haskell project that makes gRPC connections built with Nix
 
 I mostly followed [Getting Started Haskell Project with Nix](https://maybevoid.com/posts/2019-01-27-getting-started-haskell-nix.html) by _Soares Chen_. Any flaws are of course my own.
 
