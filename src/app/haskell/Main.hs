@@ -1,9 +1,6 @@
 module Main where
 
-import Control.Concurrent
-import Control.Effect
-import Control.Monad
-import Control.Monad.IO.Class
+import Control.Effect(runM)
 import System.Log.Caster.FusedEffect.Logging
 
 main :: IO ()
