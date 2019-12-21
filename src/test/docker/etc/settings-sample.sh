@@ -1,0 +1,6 @@
+#!/usr/bin/false
+
+DOCKER_REPOSITORY='jeroenvm'
+NIX_IMAGE_VERSION='latest'
+AXON_SERVER_PORT='8024'
+AXON_VERSION='4.0'

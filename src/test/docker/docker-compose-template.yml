@@ -1,0 +1,38 @@
+version: '3.3'
+
+networks:
+  foo-net:
+    driver: overlay
+
+services:
+  axon-server:
+    image: axoniq/axonserver:${AXON_VERSION}
+    networks:
+    - foo-net
+    ports:
+    - target: 8024
+      published: ${AXON_SERVER_PORT}
+    expose:
+    - "8024"
+    - "8124"
+    volumes:
+    -
+      type: volume
+      source: axon-data
+      target: /opt/axonserver/data
+  foo:
+    image: ${DOCKER_REPOSITORY}/nix:${NIX_IMAGE_VERSION}
+    command:
+    - bash
+    - '-c'
+    - 'while true ; do sleep 1 ; done'
+    hostname: foo
+    networks:
+    - foo-net
+    depends_on:
+    - axon-server
+#${FOO_VOLUMES}
+
+volumes:
+  mongo-data:
+  axon-data:

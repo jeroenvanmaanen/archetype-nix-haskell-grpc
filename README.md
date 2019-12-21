@@ -22,4 +22,9 @@ Prelude> import Network.HTTP2.Client
 [container]$ hoogle generate --insecure
 
 [container]$ nix-shell --pure shell.nix --run "cabal repl"
+
+[host-ttya]$ src/test/docker/docker-compose-up.sh --dev
+[host-ttyb]$ docker exec -ti foo_foo_1 bash
+[foo]$ nix-env -iA -f '<.>' curl
+[foo]$ curl http://axon-server:8024/
 ```
