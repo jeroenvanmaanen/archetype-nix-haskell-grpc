@@ -18,6 +18,8 @@ Prelude> import Network.HTTP2.Client
 [container]$ result/bin/archetype-nix-haskell
 
 [container]$ nix-env -f '<.>' -iA haskellPackages."http2-grpc-proto-lens"
+[container]$ nix-env -f '<.>' -iA haskellPackages.hoogle
+[container]$ hoogle generate --insecure
 
 [container]$ nix-shell --pure shell.nix --run "cabal repl"
 ```

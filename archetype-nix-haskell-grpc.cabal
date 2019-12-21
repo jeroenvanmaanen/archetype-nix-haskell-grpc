@@ -17,19 +17,31 @@ license-file:           LICENSE
 build-type:             Simple
 extra-source-files:     CHANGELOG.md, readme.md
 
+library
+  exposed-modules:
+      System.Log.Caster.FusedEffect.Logging
+  hs-source-dirs:
+      src/lib/haskell
+  default-extensions: DeriveAnyClass DeriveFunctor DeriveGeneric DerivingStrategies FlexibleContexts FlexibleInstances GeneralizedNewtypeDeriving MultiParamTypeClasses TypeOperators UndecidableInstances
+  build-depends:
+      base >=4.7 && <5
+    , caster
+    , fused-effects
+    , logging-facade
+
 executable archetype-nix-haskell-grpc
   hs-source-dirs:       src/app/haskell
   main-is:              Main.hs
   -- other-modules:
   -- other-extensions:
   build-depends:
-         base >=4.12 && <4.13
-       , fused-effects
-       , stm
-       , random
-       , logging-facade
-       , http2-client
-       , http2-client-grpc
-       , http2-grpc-proto-lens
-  -- hs-source-dirs:
+      base >=4.12 && <4.13
+    , archetype-nix-haskell-grpc
+    , fused-effects
+    , stm
+    , random
+    , logging-facade
+    , http2-client
+    , http2-client-grpc
+    , http2-grpc-proto-lens
   default-language:     Haskell2010
