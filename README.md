@@ -27,6 +27,9 @@ The components that I want to combine are:
 * Haskell (for pure functional programming, strong typing and performance)
 * Envoy (for service mesh architecture and high availability)
 
+I fell in love with fused-effects for monad composition, so I plan to use
+that too. `;-)`
+
 Axon and Envoy use gRPC to integrate with other components, so I would like to
 develop Haskell programs that integrate smoothly with gRPC APIs. I tried to
 get [Haskell gRPC support](https://github.com/awakesecurity/gRPC-haskell)
