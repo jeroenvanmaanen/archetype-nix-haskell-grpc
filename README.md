@@ -11,20 +11,26 @@ characteristics:
 * Event Sourcing
 * Strong typing
 * Pure functional programming
+* High Performance
+* High Availability
+* Scalability
 
 On top of that I would love to be able to start a project as a monolithic
 application and have it evolve into a collection of micro-services that is
 integrated into a service mesh architecture.
 
 The components that I want to combine are:
-* Docker (to minimise the impact on the host system)
+* Docker (to minimise the impact on/from the host system)
 * Nix (to manage dependencies)
-* Axon Server (for event storage and message routing)
-* Haskell (for pure functional programming and strong typing)
-* Envoy (for service mesh architecture)
+* Axon Server (for event storage, message routing, and scalability)
+* Haskell (for pure functional programming, strong typing and performance)
+* Envoy (for service mesh architecture and high availability)
 
 Axon and Envoy use gRPC to integrate with other components, so I would like to
-develop Haskell programs that integrate smoothly with gRPC APIs.
+develop Haskell programs that integrate smoothly with gRPC APIs. I tried to
+get [Haskell gRPC support](https://github.com/awakesecurity/gRPC-haskell)
+from Awake Security to work, but failed miserably. This is an attempt to use
+[haskell-grpc-native](https://github.com/haskell-grpc-native).
 
 ## Setup
 
