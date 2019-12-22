@@ -1,6 +1,7 @@
 # Archetype of a Haskell project that makes gRPC connections built with Nix
 
-This project is still **Work In Progress**.
+This project is still **Work In Progress**. I think I've got all necessary
+dependencies lined up, but I still have to connect the dots... 
 
 ## Introduction
 
