@@ -15,7 +15,7 @@ characteristics:
 * High Availability
 * Scalability
 
-On top of that I would love to be able to start a project as a monolithic
+On top of that, I would love to be able to start a project as a monolithic
 application and have it evolve into a collection of micro-services that is
 integrated into a service mesh architecture.
 
