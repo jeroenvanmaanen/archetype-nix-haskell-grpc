@@ -63,6 +63,27 @@ has Nix and GHC:
 [foo]$ curl http://axon-server:8024/
 ```
 
+Generate lenses for protobuf specifications:
+```
+[foo]$ export PROJECT="$(pwd)"
+[foo]$ ( cd /src/axon-server-api/src/main/proto ; protoc --plugin=protoc-gen-haskell=`which proto-lens-protoc` --haskell_out="${PROJECT}/src/lib/haskell" *.proto )
+```
+
+Prepare to build the application:
+```
+[foo]$ nix-shell --pure -p cabal2nix --run "cabal2nix ." > default.nix
+```
+
+Build the application:
+```
+[foo]$ nix-build release.nix
+```
+
+Run the application
+```
+[foo]$ result/bin/archetype-nix-haskell
+```
+
 This is a list of commands that I figured out and might come in handy: 
 ```
 [host]$ docker run --rm -ti -v "${HOME}:${HOME}" -w "$(pwd)" jeroenvm/nix
@@ -73,10 +94,6 @@ Prelude> import Network.GRPC.HTTP2.ProtoLens
 [container]$ nix-shell --pure shell.nix
 [nix-shell]# ghci
 Prelude> import Network.HTTP2.Client
-
-[container]$ nix-shell --pure -p cabal2nix --run "cabal2nix ." > default.nix
-[container]$ nix-build release.nix
-[container]$ result/bin/archetype-nix-haskell
 
 [container]$ nix-env -f '<.>' -iA haskellPackages."http2-grpc-proto-lens"
 [container]$ nix-env -f '<.>' -iA haskellPackages.hoogle

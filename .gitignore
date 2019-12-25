@@ -25,5 +25,6 @@ cabal.project.local~
 .HTF/
 .ghc.environment.*
 /src/test/docker/docker-compose.yml
+/src/lib/haskell/Proto/
 *.iml
 /.idea
