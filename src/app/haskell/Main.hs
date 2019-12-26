@@ -15,18 +15,6 @@ import Data.Default.Class (def)
 import Network.TLS as TLS
 import Network.TLS.Extra.Cipher as TLS
 
-tlsParams :: ClientParams
-tlsParams = TLS.ClientParams {
-    TLS.clientWantSessionResume    = Nothing
-  , TLS.clientUseMaxFragmentLength = Nothing
-  , TLS.clientServerIdentification = ("127.0.0.1", "")
-  , TLS.clientUseServerNameIndication = True
-  , TLS.clientShared               = def
-  , TLS.clientHooks                = def { TLS.onServerCertificate = \_ _ _ _ -> return [] }
-  , TLS.clientSupported            = def { TLS.supportedCiphers = TLS.ciphersuite_default }
-  , TLS.clientDebug                = def
-  }
-
 clientActions :: Http2Client -> ClientIO ()
 clientActions conn = do
   let fc = _incomingFlowControl conn
@@ -53,6 +41,6 @@ main =
      runM . runLogEffect $ do
        info "bliep"
      _ <- runClientIO $ do
-       frameConn <- newHttp2FrameConnection "axon-server" 8124 (Just tlsParams )
+       frameConn <- newHttp2FrameConnection "axon-server" 8124 Nothing
        runHttp2Client frameConn 8192 8192 [(SettingsInitialWindowSize,10000000)] defaultGoAwayHandler ignoreFallbackHandler clientActions
      return ()
