@@ -21,10 +21,12 @@ clientActions conn = do
   lift $ _addCredit fc 10000000
   _ <- _updateWindow fc
   let requestHeaders = [
-          (":method", "GET")
-        , (":scheme", "https")
-        , (":path", "?q=http2")
+          (":method", "POST")
+        , (":scheme", "http")
+        , (":path", "/EventStore/ListEvents")
         , (":authority", "axon-server")
+        , ("Accept", "application/grpc")
+        , ("Content-Type", "application/grpc")
         ]
   _ <- withHttp2Stream conn $ \stream ->
     let initStream = headers stream requestHeaders (setEndHeader . setEndStream)
