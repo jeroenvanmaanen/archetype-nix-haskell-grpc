@@ -20,14 +20,20 @@ extra-source-files:     CHANGELOG.md, readme.md
 library
   exposed-modules:
       System.Log.Caster.FusedEffect.Logging
+    , Proto.Common
+    , Proto.Control
   hs-source-dirs:
       src/lib/haskell
   default-extensions: DeriveAnyClass DeriveFunctor DeriveGeneric DerivingStrategies FlexibleContexts FlexibleInstances GeneralizedNewtypeDeriving MultiParamTypeClasses TypeOperators UndecidableInstances
   build-depends:
       base >=4.7 && <5
     , caster
+    , deepseq ==1.4.*
     , fused-effects
     , logging-facade
+    , proto-lens
+    , proto-lens-protobuf-types
+    , proto-lens-runtime
 
 executable archetype-nix-haskell-grpc
   hs-source-dirs:       src/app/haskell
@@ -36,15 +42,19 @@ executable archetype-nix-haskell-grpc
   -- other-extensions:
   default-extensions: DeriveAnyClass DeriveFunctor DeriveGeneric DerivingStrategies FlexibleContexts FlexibleInstances GeneralizedNewtypeDeriving MultiParamTypeClasses TypeOperators UndecidableInstances
   build-depends:
-      base >=4.12 && <4.13
+      base >=4.10 && <4.14
     , archetype-nix-haskell-grpc
     , data-default-class
+    , deepseq ==1.4.*
     , http2
     , http2-client
     , http2-client-grpc
     , http2-grpc-proto-lens
     , fused-effects
     , logging-facade
+    , proto-lens
+    , proto-lens-protobuf-types
+    , proto-lens-runtime
     , random
     , stm
     , tls

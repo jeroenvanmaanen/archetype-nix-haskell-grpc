@@ -15,6 +15,9 @@ import Data.Default.Class (def)
 import Network.TLS as TLS
 import Network.TLS.Extra.Cipher as TLS
 
+import Data.ProtoLens.Message
+import Proto.Control
+
 clientActions :: Http2Client -> ClientIO ()
 clientActions conn = do
   let fc = _incomingFlowControl conn
@@ -23,11 +26,13 @@ clientActions conn = do
   let requestHeaders = [
           (":method", "POST")
         , (":scheme", "http")
-        , (":path", "/EventStore/ListEvents")
+        , (":path", "/PlatformService/GetPlatformServer")
         , (":authority", "axon-server")
-        , ("Accept", "application/grpc")
-        , ("Content-Type", "application/grpc")
+        , ("Accept", "application/grpc+proto")
+        , ("Content-Type", "application/grpc+proto")
+        , ("grpc-message-type", "GetEventsRequest")
         ]
+      request = defMessage :: ClientIdentification
   _ <- withHttp2Stream conn $ \stream ->
     let initStream = headers stream requestHeaders (setEndHeader . setEndStream)
         resetPushPromises _ pps _ _ _ = _rst pps RefusedStream
