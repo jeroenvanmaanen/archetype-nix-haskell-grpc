@@ -81,7 +81,7 @@ Build the application:
 
 Run the application
 ```
-[foo]$ result/bin/archetype-nix-haskell
+[foo]$ result/bin/archetype-nix-haskell-grpc
 ```
 
 This is a list of commands that I figured out and might come in handy: 
